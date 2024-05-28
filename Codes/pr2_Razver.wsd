@@ -1,0 +1,32 @@
+@startuml
+node ClientNode as "Клиент" {
+node ClientBr as "Браузер"
+}
+
+node OrgNode as "Организатор" {
+node OrgBr as "Браузер"
+}
+
+node WebServerNode as "Веб_Сервер" {
+node HTTPServerNode as "Http-Сервер"
+}
+
+node BDServerNode as "Сервер_БД" {
+database BDMatch as "БД_Матчей"
+database BDTickets as "БД_Билетов"
+database BDArchiv as "БД_Архива_матчей"
+database BDUsers as "БД_Пользователей"
+}
+
+node ClientAdminNode as "Администратор" {
+node AdminPanel as "Панель администратора"
+}
+
+ClientNode -- WebServerNode : https
+
+OrgNode -- WebServerNode : https
+
+WebServerNode -- BDServerNode
+
+ClientAdminNode -- BDServerNode
+@enduml
